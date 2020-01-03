@@ -2,9 +2,9 @@ import React from "react";
 
 const NumberButton = (props) => {
   return (
-    <>
-      <button className="number-button">{props.num}</button>
-    </>
+    <React.Fragment>
+      <button onClick={props.handleClick} value={props.num} className="number-button">{props.num}</button>
+    </React.Fragment>
   );
 };
 
