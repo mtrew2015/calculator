@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { numbers, operators, specials } from '../data';
 import '../App.scss';
 import math from '../math';
@@ -6,11 +6,26 @@ import math from '../math';
 const Calculator = (props) => {
 	const [ display, setDisplay ] = useState('');
 
+	// document.addEventListener("keydown",
+	// handlekeyDown)
+
+	// function handlekeyDown(e){
+	// 	let value = e.key
+	// 	 console.log(e)
+	// 	if (value === '=') {
+	// 		const histEntry = {problem: display, solution: math.evaluate(display)}
+	// 		props.setHistory(prev => [...prev, histEntry])
+	// 		setDisplay(math.eval(display));
+	// 	} else {
+	// 		setDisplay((prev) => prev + value);
+	// 	}
+	// }
+
 	function addToString(e) {
 		let value = e.target.value;
 		if (value === '=') {
-			const histEntry = {problem: display, solution: math.evaluate(display)}
-			props.setHistory(prev => [...prev, histEntry])
+			const histEntry = { problem: display, solution: math.evaluate(display) };
+			props.setHistory((prev) => [ ...prev, histEntry ]);
 			setDisplay(math.eval(display));
 		} else {
 			setDisplay((prev) => prev + value);
@@ -29,7 +44,6 @@ const Calculator = (props) => {
 			}
 		} else {
 			if (val === '%') {
-				
 				setDisplay((prev) => math.evaluate(`${prev} / 100`));
 			}
 		}
