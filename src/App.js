@@ -10,6 +10,7 @@ function App() {
 		<div className="wrapper">
 			<div className="history">
 				<h1>History</h1>
+				<button id="historyButton" onClick={() => setHistory([])}>Clear History</button>
 				{history.map((item) => {
 				return <p>{item.problem}={item.solution}</p>
 				})}
