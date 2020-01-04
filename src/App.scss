@@ -1,4 +1,4 @@
-$mobile: "only screen and (max-width : 600px)";
+$mobile: "only screen and (max-width : 700px)";
 
 
 html {
@@ -13,11 +13,11 @@ html {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 25%;
+	width: 15%;
 	border: 2px solid rgb(4, 50, 85);
 	margin-right: 20px;
-	border-radius: 5px;
-	height: 50%;
+    border-radius: 5px;
+	max-height: 56%;
 	overflow: auto;
 	color:rgb(4, 50, 85); 
 	p {
@@ -37,7 +37,7 @@ html {
 .wrapper {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	height: 100vh;
 }
