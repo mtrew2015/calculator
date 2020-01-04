@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {specials} from '../../../data';
+import {specials} from '../data';
 import SpecialButton from './SpecialButton';
 
 
@@ -13,7 +13,7 @@ const Specials = () => {
   return (
     <>
       {commands.map((command, idx) => {
-          return <SpecialButton handleClick={handleClick} key={idx} name={command} value={command} command={command}/>
+          return <button onClick={handleClick} value={value} className="special-button">{command}</button>
       })}
     </>
   );

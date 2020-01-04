@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {numbers} from '../../../data';
+import {numbers} from '../data';
 import NumberButton from './NumberButton';
 
 
@@ -16,8 +16,10 @@ const Numbers = (props) => {
   return (
     <React.Fragment>
         {nums.map((num, idx) => {
-            return <NumberButton handleClick={handleClick} value={num} key={idx} num={num}/>
+            return   <button onClick={handleClick} value={num} className="number-button">{num}</button>
         })}
+
+        {/* Moving this component here to avoid additional abstraction  */}
       
     </React.Fragment>
   );

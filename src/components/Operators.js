@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { operators } from '../../../data';
+import { operators } from '../data';
 import OperatorButton from './OperatorButton';
-import math from '../../math';
+import math from '../math';
 
 //import any components needed
 
@@ -58,12 +58,12 @@ const Operators = (props) => {
         console.log(result)
 
     }
-	// STEP 2 - add the imported data to state
 	return (
 		<React.Fragment>
 			{ops.map((operator, idx) => {
-				return <OperatorButton value={operator.value} operator={operator.char} handleClick={handleClick} key={idx} />;
+				return  <button onClick={handleClick} value={value} className="operator-button">{operator}</button>
 			})}
+            {/* Move this button here as well */}
 		</React.Fragment>
 	);
 };
