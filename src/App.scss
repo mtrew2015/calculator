@@ -1,17 +1,30 @@
-.container {
+
+html{
+	background-color: rgb(153, 195, 207)
+}
+.wrapper{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background-color: #c00025;
 	width: 100%;
-	max-width: 550px;
+	max-width: 400px;
 	border-radius: 15px;
-    padding-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    padding-bottom: 15px;
 }
 .display {
-	margin-top: 25px;
-	height: 100px;
-	width: 450px;
+	margin-top: 20px;
+	height: 80px;
+	width: 85%;
 	border-radius: 50px;
 	color: white;
 	background-color: #322c2d;
@@ -20,9 +33,11 @@
 	justify-content: flex-end;
 	align-items: flex-end;
 	padding-right: 8%;
-    font-size: 5.0rem;
+    font-size: 60px;
     align-self: center;
-    margin-bottom: 5%;
+	margin-bottom: 1%;
+	overflow: hidden;
+	
 }
 
 .body {
@@ -82,8 +97,8 @@
 button {
     border-radius: 100%;
     width: 25%;
-    height: 95px;
-    font-size: 2rem;
+    height: 55px;
+    font-size: 1.6rem;
     color: white;
     box-shadow: 0 3px #322c2d;
     border: none;
