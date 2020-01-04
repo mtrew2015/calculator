@@ -66,7 +66,7 @@ html {
     padding-bottom: 15px;
     @media #{$mobile}{
         width: 100%;
-        max-width: 200px;
+        max-width: 300px;
 	}
 
 	.opButton {
@@ -77,7 +77,7 @@ html {
 	button {
         @media #{$mobile}{
         font-size: 1rem;
-        height: 25px;
+        height: 45px;
 	}
 		border-radius: 100%;
 		cursor: pointer;
@@ -113,8 +113,8 @@ html {
 	margin-bottom: 1%;
     overflow: hidden;
     @media #{$mobile}{
-        height: 40px;
-        font-size: 28px;
+        height: 60px;
+        font-size: 36px;
 	}
 }
 
