@@ -9,6 +9,8 @@ const Calculator = (props) => {
 	function addToString(e) {
 		let value = e.target.value;
 		if (value === '=') {
+			const histEntry = {problem: display, solution: math.evaluate(display)}
+			props.setHistory(prev => [...prev, histEntry])
 			setDisplay(math.eval(display));
 		} else {
 			setDisplay((prev) => prev + value);
@@ -27,6 +29,7 @@ const Calculator = (props) => {
 			}
 		} else {
 			if (val === '%') {
+				
 				setDisplay((prev) => math.evaluate(`${prev} / 100`));
 			}
 		}

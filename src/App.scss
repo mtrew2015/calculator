@@ -1,11 +1,29 @@
 
 html{
-	background-color: rgb(153, 195, 207)
+	background-color: rgb(153, 195, 207);
+	font-family: 'Montserrat', sans-serif;
+}
+
+.history{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 25%;
+	border: 2px solid rgb(4, 50, 85);
+	margin-right: 20px;
+	border-radius: 5px;
+	height: 50%;
+	overflow: auto;
+	color:  rgb(4, 50, 85);
+	p{
+		margin: 0;
+		line-height: 1.5;
+	}
 }
 .wrapper{
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	height: 100vh;
 	
