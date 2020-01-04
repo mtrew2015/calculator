@@ -1,9 +1,16 @@
-$mobile: "only screen and (max-width : 700px)";
+$mobile: "only screen and (max-width : 550px)";
 
 
 html {
 	background-color: rgb(153, 195, 207);
 	font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+    @media #{$mobile}{
+        height: 25px;
+        width: auto;
+	}
 }
 
 .history {
@@ -13,7 +20,7 @@ html {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 15%;
+	width: 20%;
 	border: 2px solid rgb(4, 50, 85);
 	margin-right: 20px;
     border-radius: 5px;
@@ -39,18 +46,26 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+    height: 100vh;
+    @media #{$mobile}{
+		height: 100vh;
+	}
 }
 
 .container {
-	display: flex;
+    display: flex;
+    touch-action: manipulation;
 	flex-direction: column;
 	justify-content: center;
 	background-color: #c00025;
 	width: 100%;
 	max-width: 400px;
 	border-radius: 15px;
-	padding-bottom: 15px;
+    padding-bottom: 15px;
+    @media #{$mobile}{
+        width: 100%;
+        max-width: 200px;
+	}
 
 	.opButton {
 		background-color: rgb(0, 114, 145);
@@ -58,6 +73,10 @@ html {
 		margin-left: 3px;
 	}
 	button {
+        @media #{$mobile}{
+        font-size: 1rem;
+        height: 25px;
+	}
 		border-radius: 100%;
 		cursor: pointer;
 		width: 25%;
@@ -90,7 +109,11 @@ html {
 	font-size: 60px;
 	align-self: center;
 	margin-bottom: 1%;
-	overflow: hidden;
+    overflow: hidden;
+    @media #{$mobile}{
+        height: 40px;
+        font-size: 28px;
+	}
 }
 
 .body {
