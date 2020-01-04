@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
-import Header from './components/Header'
+import Header from './components/Header';
+import Calculator from './components/Calculator';
 
 
 function App() {

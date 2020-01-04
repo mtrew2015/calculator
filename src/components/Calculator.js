@@ -1,94 +1,84 @@
 import React, { useState } from 'react';
-import { numbers } from '../data';
-
+import { numbers, operators, specials } from '../data';
+import '../App.scss';
+import math from '../math';
 
 const Calculator = (props) => {
-	const [ nums ] = useState(numbers);
-	const { setResult, currentNum, setCurrentNum } = props;
+	const [ mathString, setMathString ] = useState('');
+	const [ result, setResult ] = useState(0);
+	const [ current, setCurrent ] = useState('0');
+	const [ display, setDisplay ] = useState('');
+	const [ lastOp, setLastOp ] = useState('');
+	const [ lastNum, setLastNum ] = useState('0');
 
-	const handleClick = (e) => {
+	const operationHandler = (e) => {
 		const operator = e.target.value;
-		switch (operator) {
-			case '+':
-				add(currentNum, result, setResult);
-				setLastOperation('+');
-				break;
-			case '-':
-				subtract(currentNum, result, setResult);
-				setLastOperation('-');
-				break;
-			case '*':
-				multiply(currentNum, result, setResult);
-				setLastOperation('*');
-				break;
-			case '/':
-				divide(currentNum, result, setResult);
-				setLastOperation('/');
-				break;
-			case '=':
-				equals(setResult, lastOperation);
-				break;
-			default:
-				console.log('something went wrong');
+
+	};
+
+	function addToString(e){
+		let value = e.target.value;
+		if (value === "="){
+			setDisplay(math.eval(display))
+		} else{
+			setDisplay((prev) => prev + value)
 		}
-	};
-
-	function add(currentNum, result, setResult) {}
-	function subtract(currentNum, result, setResult) {
-		setResult(math.subtract(result, currentNum));
-		console.log(result);
-	}
-	function multiply(currentNum, result, setResult) {
-		setResult(math.multiply(result, currentNum));
-		console.log(result);
-	}
-	function divide(currentNum, result, setResult) {
-		setResult(math.divide(result, currentNum));
-		console.log(result);
-	}
-	function equals(setResult, lastOperation) {
-		setResult(math.eval(`${result} ${lastOperation} ${currentNum}`));
-		console.log(result);
+		
 	}
 
-	const handleClick = (e) => {
-		setCurrentNum((prevState) => {
-			return prevState + e.target.value;
-		});
+	const specialClick = (e) => {
+		const val = e.target.value;
+		if(val === "C"){
+			setDisplay('')
+		} else if (val === "+/-") {
+			if(display.slice(0) === "-"){
+				setDisplay(prev => prev.substr(1))
+			} else {
+				setDisplay(prev => "-" + prev )
+			}
+		} else{
+			if(val === "%"){
+				setDisplay(prev => math.evaluate(`${prev} / 100`))
+			}
+		} 
 	};
+
 	// STEP 2 - add the imported data to state
 	return (
-		<React.Fragment>
-			<div className="display">0</div>;
-			<div>
-				{nums.map((num, idx) => {
+		<div className="container">
+			
+			<div className="display">{display}</div>;
+			<div className="buttonsContainer">
+			<section className="col-1"> 
+				{specials.map((special, idx) => {
 					return (
-						<button onClick={handleClick} value={num} className="number-button">
+						<button onClick={specialClick} value={special} id="specials" className="button">
+							{special}
+						</button>
+					);
+				})}
+				{numbers.map((num, idx) => {
+					return (
+						<button onClick={addToString} value={num} className="button">
 							{num}
 						</button>
 					);
 				})}
-			</div>
+			</section>
+			<section className="col-2">
 			<div>
-				{commands.map((command, idx) => {
+				{operators.map((operator, idx) => {
 					return (
-						<button onClick={handleClick} value={value} className="special-button">
-							{command}
+						<button onClick={addToString} value={operator.value} className="opButton">
+							{operator.char}
 						</button>
 					);
 				})}
-				<div>
-					{ops.map((operator, idx) => {
-						return (
-							<button onClick={handleClick} value={value} className="operator-button">
-								{operator}
-							</button>
-						);
-					})}
-				</div>
 			</div>
-		</React.Fragment>
+			</section>
+			</div>
+		</div>
 	);
 };
 
-export default Caclculator;
+export default Calculator;
