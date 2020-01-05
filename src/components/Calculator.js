@@ -13,7 +13,7 @@ const Calculator = (props) => {
 			window.removeEventListener('keydown', handlekeyDown);
 			window.removeEventListener('keydown', handleEquals);
 		};
-	},[handleEquals],[]);
+	},[display, setDisplay,handleEquals],[]);
 
 
 	function handlekeyDown(e) {
@@ -25,7 +25,7 @@ const Calculator = (props) => {
 			setDisplay((prev) => prev + value);
 		}
 	}
-	// eslint-disable-next-line
+	 //eslint-disable-next-line
 	 function handleEquals(e) {
 		 console.log(e)
 		const value = e.key
@@ -36,7 +36,7 @@ const Calculator = (props) => {
 			setDisplay(solution);
 		}
 		if (value === "Backspace"){
-			if(display.length > 1){
+			if(display.length >= 1){
 				setDisplay(prev =>prev.substring(0, prev.length -1) )
 			}
 			
