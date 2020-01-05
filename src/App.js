@@ -10,9 +10,9 @@ function App() {
 			<div className="history">
 				<h1>History</h1>
 
-				{history.map((item) => {
+				{history.map((item, idx) => {
 					return (
-						<p>
+						<p key={idx}>
 							{item.problem}={item.solution}
 						</p>
 					);

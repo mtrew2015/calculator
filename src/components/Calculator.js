@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { numbers, operators, specials } from '../data';
 import '../App.scss';
 import math from '../math';
@@ -6,27 +6,43 @@ import math from '../math';
 const Calculator = (props) => {
 	const [ display, setDisplay ] = useState('');
 
-	// document.addEventListener("keydown",
-	// handlekeyDown)
+	useEffect(() => {
+		window.addEventListener('keydown', handlekeyDown);
+		// window.addEventListener('keydown', handleEquals);
+		return () => {
+			window.addEventListener('keydown', handlekeyDown);
+			// window.addEventListener('keydown', handleEquals);
+		};
+	}, []);
 
-	// function handlekeyDown(e){
-	// 	let value = e.key
-	// 	 console.log(e)
+	function handlekeyDown(e) {
+		e.preventDefault();
+		const current = e.key;
+		const values = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/'];
+		if (values.includes(current)) {
+			let value = current;
+			setDisplay((prev) => prev + value);
+		}
+	}
+
+	//  function handleEquals(e) {
+	// 	const value = e.key
+	// 	console.log(display)
 	// 	if (value === '=') {
-	// 		const histEntry = {problem: display, solution: math.evaluate(display)}
-	// 		props.setHistory(prev => [...prev, histEntry])
-	// 		setDisplay(math.eval(display));
-	// 	} else {
-	// 		setDisplay((prev) => prev + value);
+	// 		const solution = math.evaluate(display)
+	// 		const histEntry = { problem: display, solution: solution };
+	// 		props.setHistory((prev) => [ ...prev, histEntry ]);
+	// 		setDisplay(solution);
 	// 	}
 	// }
 
 	function addToString(e) {
+		console.log(e.target)
 		let value = e.target.value;
 		if (value === '=') {
 			const histEntry = { problem: display, solution: math.evaluate(display) };
 			props.setHistory((prev) => [ ...prev, histEntry ]);
-			setDisplay(math.eval(display));
+			setDisplay(math.evaluate(display));
 		} else {
 			setDisplay((prev) => prev + value);
 		}
@@ -57,14 +73,14 @@ const Calculator = (props) => {
 				<section className="col-1">
 					{specials.map((special, idx) => {
 						return (
-							<button onClick={specialClick} value={special} id="specials" className="button">
+							<button key={idx} onClick={specialClick} value={special} id="specials" className="button">
 								{special}
 							</button>
 						);
 					})}
 					{numbers.map((num, idx) => {
 						return (
-							<button onClick={addToString} value={num} className="button">
+							<button key={idx} onClick={addToString} value={num} className="button">
 								{num}
 							</button>
 						);
@@ -74,7 +90,7 @@ const Calculator = (props) => {
 					<div>
 						{operators.map((operator, idx) => {
 							return (
-								<button onClick={addToString} value={operator.value} className="opButton">
+								<button key={idx} onClick={addToString} value={operator.value} className="opButton">
 									{operator.char}
 								</button>
 							);
