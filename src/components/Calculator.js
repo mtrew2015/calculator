@@ -36,7 +36,10 @@ const Calculator = (props) => {
 			setDisplay(solution);
 		}
 		if (value === "Backspace"){
-			setDisplay(prev =>prev.substring(0, prev.length -1) )
+			if(display.length > 1){
+				setDisplay(prev =>prev.substring(0, prev.length -1) )
+			}
+			
 		}
 	}
 
