@@ -8,12 +8,13 @@ const Calculator = (props) => {
 
 	useEffect(() => {
 		window.addEventListener('keydown', handlekeyDown);
-		// window.addEventListener('keydown', handleEquals);
+		window.addEventListener('keydown', handleEquals);
 		return () => {
-			window.addEventListener('keydown', handlekeyDown);
-			// window.addEventListener('keydown', handleEquals);
+			window.removeEventListener('keydown', handlekeyDown);
+			window.removeEventListener('keydown', handleEquals);
 		};
-	}, []);
+	},[handleEquals],[]);
+
 
 	function handlekeyDown(e) {
 		e.preventDefault();
@@ -24,17 +25,20 @@ const Calculator = (props) => {
 			setDisplay((prev) => prev + value);
 		}
 	}
-
-	//  function handleEquals(e) {
-	// 	const value = e.key
-	// 	console.log(display)
-	// 	if (value === '=') {
-	// 		const solution = math.evaluate(display)
-	// 		const histEntry = { problem: display, solution: solution };
-	// 		props.setHistory((prev) => [ ...prev, histEntry ]);
-	// 		setDisplay(solution);
-	// 	}
-	// }
+	// eslint-disable-next-line
+	 function handleEquals(e) {
+		 console.log(e)
+		const value = e.key
+		if (value === 'Enter') {
+			const solution = math.evaluate(display)
+			const histEntry = { problem: display, solution: solution };
+			props.setHistory((prev) => [ ...prev, histEntry ]);
+			setDisplay(solution);
+		}
+		if (value === "Backspace"){
+			setDisplay(prev =>prev.substring(0, prev.length -1) )
+		}
+	}
 
 	function addToString(e) {
 		console.log(e.target)
