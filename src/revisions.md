@@ -1,0 +1,1 @@
+Delete NumberButton.js and OperatorButton.js -- simplify
