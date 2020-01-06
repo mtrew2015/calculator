@@ -19,7 +19,7 @@ const Calculator = (props) => {
 	function handlekeyDown(e) {
 		e.preventDefault();
 		const current = e.key;
-		const values = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/'];
+		const values = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/','.'];
 		if (values.includes(current)) {
 			let value = current;
 			setDisplay((prev) => prev + value);
