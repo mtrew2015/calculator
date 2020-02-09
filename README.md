@@ -1,3 +1,5 @@
+# This project was done while I was a team lead at Lambda School to better help my students.
+
 # Module Project: React-UI-Components - Lambda Calculator
 
 In this module project you will build your very own calculator app. You have been provided with a file structure and suggested pattern for constructing your components. Be sure to connect all necessary files and pass the data using the techniques from the module.
