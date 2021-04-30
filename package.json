@@ -3,8 +3,10 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "@babel/helper-builder-react-jsx": "^7.12.13",
+    "@babel/helper-regex": "^7.10.5",
     "mathjs": "^6.3.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-keydown": "^1.9.12",
